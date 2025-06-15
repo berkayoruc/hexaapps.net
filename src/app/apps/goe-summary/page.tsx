@@ -193,7 +193,7 @@ const GoeSummaryPage: FC = () => {
           setIsLoading(true);
           // Butona tıklandığında mevcut checkbox durumunu localStorage'a yaz
           if (typeof window !== "undefined") {
-            localStorage.setItem("isRememberUrl", isRememberUrl);
+            localStorage.setItem("isRememberUrl", String(isRememberUrl));
           }
           try {
             const response = await axios.post("/api/proxy", { targetUrl: url });
@@ -225,8 +225,8 @@ const GoeSummaryPage: FC = () => {
             {/* Oturum kartları için grid düzeni */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {data.data
-                .sort((a, b) => b.startUnix - a.startUnix)
-                .map((session) => (
+                .sort((a: any, b: any) => b.startUnix - a.startUnix)
+                .map((session: any) => (
                   <SessionCard key={session.session_number} session={session} />
                 ))}
             </div>

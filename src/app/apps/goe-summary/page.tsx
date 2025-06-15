@@ -77,9 +77,9 @@ const Icons = {
 };
 
 // Tek bir şarj oturumu kartını gösteren bileşen
-const SessionCard = ({ session }) => {
+const SessionCard = ({ session }: any) => {
   // Tarih metnini formatlamak için yardımcı fonksiyon
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: any) => {
     const [date, time] = dateString.split(" ");
     return { date, time };
   };

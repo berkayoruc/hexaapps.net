@@ -209,7 +209,7 @@ const GoeSummaryPage: FC = () => {
       >
         {isLoading ? "Alınıyor..." : "Veriyi Getir"}
       </button>
-      {data.data && (
+      {data && data.data && (
         <div className="bg-gray-900 min-h-screen text-white font-sans">
           <div className="container mx-auto px-4 py-8">
             <header className="text-center mb-10">

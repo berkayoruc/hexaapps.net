@@ -200,7 +200,6 @@ const GoeSummaryPage: FC = () => {
             if (response.status === 200) {
               setData(response.data);
             }
-            console.log(response.data.data);
           } catch (error) {
             console.log(error);
           } finally {

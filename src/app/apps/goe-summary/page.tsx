@@ -118,7 +118,9 @@ const SessionCard = ({ session }: any) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Icons.Zap />
-            <span className="text-slate-600 dark:text-slate-300">Harcanan Enerji</span>
+            <span className="text-slate-600 dark:text-slate-300">
+              Harcanan Enerji
+            </span>
           </div>
           <span className="font-semibold text-slate-900 dark:text-white">
             {session.energy.toFixed(3)} kWh
@@ -127,7 +129,9 @@ const SessionCard = ({ session }: any) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Icons.Bolt />
-            <span className="text-slate-600 dark:text-slate-300">Maks. Güç</span>
+            <span className="text-slate-600 dark:text-slate-300">
+              Maks. Güç
+            </span>
           </div>
           <span className="font-semibold text-slate-900 dark:text-white">
             {session.max_power.toFixed(3)} kW
@@ -136,7 +140,9 @@ const SessionCard = ({ session }: any) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Icons.Clock />
-            <span className="text-slate-600 dark:text-slate-300">Şarj Süresi</span>
+            <span className="text-slate-600 dark:text-slate-300">
+              Şarj Süresi
+            </span>
           </div>
           <span className="font-semibold text-slate-900 dark:text-white">
             {/* {session.seconds_total} */}
@@ -171,25 +177,29 @@ const GoeSummaryPage: FC = () => {
   useEffect(() => {
     // Sayfa yüklendiğinde ve sistem tema tercihi değiştiğinde temayı ayarla
     const applyTheme = () => {
-      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
         // setTheme('dark');
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
         // setTheme('light');
       }
     };
 
     applyTheme();
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', applyTheme);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", applyTheme);
 
     // localStorage'daki tema değişikliğini dinlemek için (opsiyonel, eğer manuel tema değiştirici varsa)
     // window.addEventListener('storage', applyTheme);
 
     return () => {
-      mediaQuery.removeEventListener('change', applyTheme);
+      mediaQuery.removeEventListener("change", applyTheme);
       // window.removeEventListener('storage', applyTheme);
     };
   }, []);
@@ -249,20 +259,51 @@ const GoeSummaryPage: FC = () => {
             <div className="space-y-6">
               {/* URL Input Group */}
               <div>
-                <label htmlFor="url" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                  Veri Adresi (go-eCharger API /status URL)
-                </label>
+                <div className="flex justify-between items-center mb-1.5">
+                  <label
+                    htmlFor="url"
+                    className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                  >
+                    Veri Adresi (go-eCharger API /status URL)
+                  </label>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.open(
+                      "https://www.youtube.com",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                  className="text-xs font-medium text-cyan-600 hover:text-cyan-500 dark:text-cyan-400 dark:hover:text-cyan-300 focus:outline-none focus:underline py-2"
+                >
+                  Veri adresini nasıl bulurum?
+                </button>
+
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-slate-400 dark:text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                    <svg
+                      className="h-5 w-5 text-slate-400 dark:text-slate-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+                      />
                     </svg>
                   </div>
+
                   <input
                     type="text"
                     id="url"
                     className="block w-full pl-11 pr-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg leading-5 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-50 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm transition-colors duration-300"
-                    placeholder="http://192.168.1.x/status"
+                    placeholder="Cihazınızın veri adresini giriniz"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                   />
@@ -278,7 +319,10 @@ const GoeSummaryPage: FC = () => {
                   checked={isRememberUrl}
                   onChange={(e) => setIsRememberUrl(e.target.checked)}
                 />
-                <label htmlFor="rememberUrl" className="ml-3 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="rememberUrl"
+                  className="ml-3 block text-sm font-medium text-slate-700 dark:text-slate-300"
+                >
                   Bu cihazdaki URL&apos;yi hatırla
                 </label>
               </div>
@@ -293,9 +337,25 @@ const GoeSummaryPage: FC = () => {
             >
               {isLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Alınıyor...
                 </>
@@ -308,22 +368,25 @@ const GoeSummaryPage: FC = () => {
           {/* Data Display Section */}
           {data && data.data && (
             <div className="mt-12">
-            <header className="text-center mb-10">
+              <header className="text-center mb-10">
                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Şarj Oturumu Geçmişi
-              </h1>
+                  Şarj Oturumu Geçmişi
+                </h1>
                 <p className="text-slate-500 dark:text-slate-400 mt-3 text-lg">
-                Tüm şarj oturumlarinin detaylı kaydı.
-              </p>
-            </header>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.data
-                .sort((a: any, b: any) => b.startUnix - a.startUnix)
-                .map((session: any) => (
-                  <SessionCard key={session.session_number} session={session} />
-                ))}
+                  Tüm şarj oturumlarinin detaylı kaydı.
+                </p>
+              </header>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.data
+                  .sort((a: any, b: any) => b.startUnix - a.startUnix)
+                  .map((session: any) => (
+                    <SessionCard
+                      key={session.session_number}
+                      session={session}
+                    />
+                  ))}
+              </div>
             </div>
-          </div>
           )}
         </div>
       </div>

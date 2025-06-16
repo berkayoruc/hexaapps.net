@@ -279,7 +279,7 @@ const GoeSummaryPage: FC = () => {
                   onChange={(e) => setIsRememberUrl(e.target.checked)}
                 />
                 <label htmlFor="rememberUrl" className="ml-3 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                  Bu cihazdaki URL'yi hatırla
+                  Bu cihazdaki URL&apos;yi hatırla
                 </label>
               </div>
             </div>
@@ -313,7 +313,7 @@ const GoeSummaryPage: FC = () => {
                 Şarj Oturumu Geçmişi
               </h1>
                 <p className="text-slate-500 dark:text-slate-400 mt-3 text-lg">
-                Tüm şarj oturumlarının detaylı kaydı.
+                Tüm şarj oturumlarinin detaylı kaydı.
               </p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

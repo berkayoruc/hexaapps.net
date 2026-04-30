@@ -14,7 +14,8 @@ export default function Apps({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const appURL = "https://apps.apple.com/us/app/paws-puzzle-slidr/id6762161043";
+  const appURL =
+    "https://apps.apple.com/tr/app/paws-puzzle-sliding-tiles/id6762161043";
   const androidAppUrl =
     "https://play.google.com/store/apps/details?id=com.hexaapps.paws_puzzle_slidr";
   const appName = "Paws Puzzle Slidr";

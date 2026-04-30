@@ -19,6 +19,11 @@ export default function Apps() {
             description="Classic Arcade Puzzle Game"
           />
           <AppButton
+            appURL="/apps/paws-puzzle"
+            appName="Paws Puzzle Slidr"
+            description="Cute Animal Sliding Puzzle Game"
+          />
+          <AppButton
             appURL="/apps/find-my-thing"
             appName="Find My Thing"
             description="Find your thing with this app."

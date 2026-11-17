@@ -14,6 +14,11 @@ export default function Apps() {
       <main className="pb-24 text-4xl ">
         <div className="text-center flex flex-col lg:grid lg:grid-cols-3 gap-2">
           <AppButton
+            appURL="/apps/trim-and-tend"
+            appName="Trim & Tend"
+            description="A Cozy Gardening Game"
+          />
+          <AppButton
             appURL="/apps/brick-breaker"
             appName="Brick Breaker - Hexa"
             description="Classic Arcade Puzzle Game"

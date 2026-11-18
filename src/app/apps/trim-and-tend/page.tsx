@@ -44,8 +44,13 @@ export default function Apps({
         p="Mow lawns, prune trees and shape hedges at your uncle's landscaping firm. Bid on city contracts, grow seedlings and climb the weekly gardener leaderboard. No ads, no real-money purchases, no internet needed."
         appURL={appURL}
         androidAppUrl={androidAppUrl}
+        media={
+          <PruningDemo
+            storeUrl={appURL || androidAppUrl}
+            fallback={screenshot}
+          />
+        }
       />
-      <PruningDemo storeUrl={appURL || androidAppUrl} />
     </Layout>
   );
 }

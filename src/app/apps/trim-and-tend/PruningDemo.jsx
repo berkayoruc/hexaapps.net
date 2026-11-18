@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const THREE_SRC = "/trim-and-tend/three.min.js";
 const PROBLEMS = { dead: 2, sick: 1, sprout: 1 };
@@ -215,7 +216,7 @@ function createGame(THREE, host, onUpdate) {
       if (u.type === "healthy" && u.leaves) leaves++;
     });
     if (total === 0) return build(); // very rare: no room for a problem branch, grow another tree
-    state = { fixed: 0, total, healthyCuts: 0, leaves0: leaves, leavesLost: 0, msg: "", done: false };
+    state = { fixed: 0, total, healthyCuts: 0, leaves0: leaves, leavesLost: 0, msg: "Tap the grey, yellow and pale branches", done: false };
     emit();
   }
   const emit = () => onUpdate({ ...state });
@@ -313,6 +314,11 @@ function createGame(THREE, host, onUpdate) {
     const w = host.clientWidth, h = host.clientHeight;
     renderer.setSize(w, h);
     camera.aspect = w / h;
+    // narrow (phone-shaped) views: step back until the whole crown fits
+    const fit = 3.3 / (Math.tan((camera.fov * Math.PI) / 360) * camera.aspect);
+    const d = Math.max(10.5, fit);
+    camera.position.set(0, 2.6 + d * 0.15, d);
+    camera.lookAt(0, 2.5, 0);
     camera.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(resize);
@@ -366,7 +372,7 @@ function stars(s) {
   return s.leavesLost / Math.max(1, s.leaves0) <= 0.15 ? 2 : 1;
 }
 
-export default function PruningDemo({ storeUrl }) {
+export default function PruningDemo({ storeUrl, fallback }) {
   const hostRef = useRef(null);
   const gameRef = useRef(null);
   const [s, setS] = useState(null);
@@ -388,14 +394,12 @@ export default function PruningDemo({ storeUrl }) {
   }, []);
 
   return (
-    <section className="pb-24 text-gray-950 text-opacity-90 dark:text-white dark:text-opacity-90">
-      <h2 className="py-3 text-3xl font-bold">Try it: Tree care</h2>
-      <p className="pb-5 text-lg opacity-80">
-        Cut the grey dead branches, the yellow sick ones and the thin pale water sprout.
-        Leave the healthy branches alone. Drag to turn the tree.
-      </p>
-      <div className="relative w-full max-w-3xl overflow-hidden rounded-3xl shadow-lg" style={{ background: "#efd6c6" }}>
-        <div ref={hostRef} className="w-full h-[420px] sm:h-[520px]" />
+    <div className="w-full max-w-[380px] xs:w-[340px] shrink-0 self-center xs:self-start">
+      <div
+        className="relative w-full overflow-hidden rounded-[2.5rem] shadow-xl"
+        style={{ background: "#efd6c6", aspectRatio: "9 / 17" }}
+      >
+        <div ref={hostRef} className="absolute inset-0" />
 
         {s && (
           <div className="pointer-events-none absolute left-3 right-3 top-3 flex items-start justify-between gap-3">
@@ -412,7 +416,7 @@ export default function PruningDemo({ storeUrl }) {
         {s?.msg && !s.done && (
           <div
             key={s.msg + s.fixed + s.healthyCuts}
-            className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-4 py-2 text-sm shadow whitespace-nowrap"
+            className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 w-max max-w-[88%] text-center rounded-2xl px-4 py-2 text-sm shadow"
             style={{ background: "#f4efe2", color: "#2f3a24" }}
           >
             {s.msg}
@@ -421,7 +425,7 @@ export default function PruningDemo({ storeUrl }) {
 
         {s?.done && (
           <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(239,214,198,.55)" }}>
-            <div className="rounded-3xl px-8 py-6 text-center shadow-xl" style={{ background: "#f4efe2", color: "#2f3a24" }}>
+            <div className="mx-4 rounded-3xl px-6 py-6 text-center shadow-xl" style={{ background: "#f4efe2", color: "#2f3a24" }}>
               <div className="text-4xl tracking-widest" style={{ color: "#d98b3a" }}>
                 {"★".repeat(stars(s))}
                 <span className="opacity-25">{"★".repeat(3 - stars(s))}</span>
@@ -456,12 +460,15 @@ export default function PruningDemo({ storeUrl }) {
           </div>
         )}
 
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center p-6 text-center" style={{ color: "#2f3a24" }}>
-            The 3D demo could not load in this browser.
-          </div>
+        {error && fallback && (
+          <Image src={fallback} alt="Trim & Tend screenshot" fill className="object-cover" />
         )}
       </div>
-    </section>
+      {!error && (
+        <p className="pt-3 text-center text-sm opacity-60">
+          Playable demo · drag to turn the tree
+        </p>
+      )}
+    </div>
   );
 }

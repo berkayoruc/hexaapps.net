@@ -15,8 +15,7 @@ export default function Apps({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  // TODO: add the App Store URL once the iOS listing is live
-  const appURL = "";
+  const appURL = "https://apps.apple.com/tr/app/trim-tend/id6822917300";
   const androidAppUrl =
     "https://play.google.com/store/apps/details?id=com.hexaapps.trimgardentend";
   const appName = "Trim & Tend";

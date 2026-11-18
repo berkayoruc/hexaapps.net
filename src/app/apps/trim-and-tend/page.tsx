@@ -2,6 +2,7 @@ import screenshot from "../assets/screenshot-trim-and-tend.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
+import PruningDemo from "./PruningDemo";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -44,6 +45,7 @@ export default function Apps({
         appURL={appURL}
         androidAppUrl={androidAppUrl}
       />
+      <PruningDemo storeUrl={appURL || androidAppUrl} />
     </Layout>
   );
 }

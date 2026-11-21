@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+  <style>
+    .rim { fill: #F4F4F1; }
+    .body { fill: #121417; }
+    @media (prefers-color-scheme: dark) { .body { fill: #F4F4F1; } .rim { fill: none; } }
+  </style>
+  <path class="rim" d="M18 0.5 33.5 9.3v17.4L18 35.5 2.5 26.7V9.3Z" stroke-linejoin="round"/>
+  <path class="body" d="M18 2.8 31.5 10.6v14.8L18 33.2 4.5 25.4V10.6Z"/>
+  <path fill="#2B4EE6" d="M18 10.2 24.8 14.1v7.8L18 25.8 11.2 21.9v-7.8Z"/>
+</svg>

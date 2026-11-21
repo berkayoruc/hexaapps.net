@@ -1,13 +1,16 @@
+import { pageMetadata } from "../../lib/seo";
 import screenshot from "../assets/screenshot-brick-breaker.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Brick Breaker - Hexa",
-  description: "Classic Arcade Puzzle Game",
-};
+export const metadata = pageMetadata({
+  title: "Brick Breaker – Hexa: Classic Arcade Puzzle Game",
+  description:
+    "Break bricks, master physics and test your reflexes in Brick Breaker – Hexa, a classic arcade puzzle game for iOS and Android.",
+  path: "/apps/brick-breaker",
+});
 
 export default function Apps({
   searchParams,

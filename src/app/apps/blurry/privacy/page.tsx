@@ -1,6 +1,13 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import "../style.css"
+import "../style.css";
+import { pageMetadata } from "../../../lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Blurry Privacy Policy",
+  description: "Privacy policy for Blurry, the AI text blurring app by Hexa Apps.",
+  path: "/apps/blurry/privacy",
+});
 
 const PrivacyPage = () => {
   const termsContent = `

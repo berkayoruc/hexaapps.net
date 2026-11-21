@@ -1,12 +1,15 @@
+import { pageMetadata } from "../lib/seo";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import AppGrid from "../components/AppGrid";
 import { apps } from "../data/apps";
 
-export const metadata = {
-  title: "Apps - Hexa Apps",
-  description: "Games, mobile apps and web tools made by Hexa Apps.",
-};
+export const metadata = pageMetadata({
+  title: "Apps & Games",
+  description:
+    "Browse every Hexa Apps product: cozy mobile games, iOS and Android utilities, Chrome extensions and web tools.",
+  path: "/apps",
+});
 
 export default function Apps() {
   return (

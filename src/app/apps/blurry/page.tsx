@@ -1,14 +1,16 @@
+import { pageMetadata } from "../../lib/seo";
 import screenshot from "../assets/screenshot-blurry.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Blurry",
+export const metadata = pageMetadata({
+  title: "Blurry — Blur & Hide Text in Photos",
   description:
-    "AI Text Editor allows you to quickly and easily detect and edit text within your images",
-};
+    "Blurry uses AI to detect text in your images so you can highlight, blur or hide it before sharing. Available on iOS and Android.",
+  path: "/apps/blurry",
+});
 
 export default function Apps({
   searchParams,

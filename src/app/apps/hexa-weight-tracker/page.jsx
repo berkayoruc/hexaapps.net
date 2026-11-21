@@ -1,12 +1,15 @@
+import { pageMetadata } from "../../lib/seo";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import screenshot from "../assets/screenshot-weight.png";
 
-export const metadata = {
-  title: "Hexa Weight Tracker",
-  description: "Track your weight with an app that's as simple as it gets.",
-};
+export const metadata = pageMetadata({
+  title: "Hexa Weight Tracker — Simple Weight Tracking",
+  description:
+    "Track your weight the simple way with Hexa Weight Tracker for iOS: quick entries, different time periods and clear charts.",
+  path: "/apps/hexa-weight-tracker",
+});
 
 export default function Apps() {
   const appURL =

@@ -1,13 +1,16 @@
+import { pageMetadata } from "../../lib/seo";
 import screenshot from "../assets/screenshot-breather.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Breather",
-  description: "iOS app to help you about breathing exercises",
-};
+export const metadata = pageMetadata({
+  title: "Breather — Guided Breathing Exercises",
+  description:
+    "Breather is an iOS app with guided breathing exercises that help you relax and focus.",
+  path: "/apps/breather",
+});
 
 export default function Apps({
   searchParams,

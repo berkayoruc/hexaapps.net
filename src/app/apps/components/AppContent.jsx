@@ -3,6 +3,8 @@ import Image from "next/image";
 import StoreBadges from "../../components/StoreBadges";
 import Hexagon from "../../components/Hexagon";
 import { apps, categoryTint, findApp } from "../../data/apps";
+import JsonLd from "../../components/JsonLd";
+import { SITE_NAME, SITE_URL } from "../../lib/seo";
 
 const FEATURE_TINTS = ["bg-mint-tint", "bg-sun-tint", "bg-coral-tint", "bg-peri-tint"];
 const HIGHLIGHT_COLORS = ["text-sun", "text-mint", "text-coral-light"];
@@ -33,8 +35,35 @@ const AppContent = ({
     : [];
   const hasImage = screenshot && typeof screenshot === "object";
 
+  const pageUrl = app ? `${SITE_URL}${app.href}` : undefined;
+  const os = [appURL && "iOS", androidAppUrl && "Android"].filter(Boolean).join(", ");
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      name: appName,
+      description: p,
+      ...(pageUrl && { url: pageUrl }),
+      ...(hasImage && { image: `${SITE_URL}${screenshot.src}`, screenshot: `${SITE_URL}${screenshot.src}` }),
+      ...(os && { operatingSystem: os }),
+      applicationCategory: isGame ? "GameApplication" : "UtilitiesApplication",
+      ...((appURL || androidAppUrl) && { installUrl: [appURL, androidAppUrl].filter(Boolean) }),
+      publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Apps", item: `${SITE_URL}/apps` },
+        { "@type": "ListItem", position: 3, name: appName, ...(pageUrl && { item: pageUrl }) },
+      ],
+    },
+  ];
+
   return (
     <main className="relative">
+      {appName && <JsonLd data={structuredData} />}
       {/* HERO */}
       <section className="mx-auto flex max-w-[1240px] flex-col gap-6 px-4 pb-12 pt-5 sm:px-8 sm:pb-28 sm:pt-14 md:flex-row md:items-center md:gap-[72px]">
         <div className="flex min-w-0 flex-1 flex-col gap-[18px] sm:gap-6">

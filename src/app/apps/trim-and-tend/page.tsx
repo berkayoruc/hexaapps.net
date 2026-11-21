@@ -1,3 +1,4 @@
+import { pageMetadata } from "../../lib/seo";
 import screenshot from "../assets/screenshot-trim-and-tend.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
@@ -5,10 +6,12 @@ import AppContent from "../components/AppContent";
 import PruningDemo from "./PruningDemo";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Trim & Tend - Hexa",
-  description: "A Cozy Gardening Game",
-};
+export const metadata = pageMetadata({
+  title: "Trim & Tend — Cozy Gardening Game",
+  description:
+    "Mow lawns, prune trees and shape hedges in Trim & Tend, a cozy gardening game for iOS and Android. No ads, no real-money purchases, plays offline.",
+  path: "/apps/trim-and-tend",
+});
 
 const FEATURES = [
   {

@@ -1,7 +1,14 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import "../style.css"
+import "../style.css";
+import { pageMetadata } from "../../../lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Find My Thing Terms and Conditions",
+  description: "Terms and conditions for using Find My Thing, the iOS app by Hexa Apps.",
+  path: "/apps/find-my-thing/terms",
+});
 
 const TermsPage = () => {
   const termsContent = `

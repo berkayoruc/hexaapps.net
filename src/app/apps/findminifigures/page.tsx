@@ -1,13 +1,16 @@
+import { pageMetadata } from "../../lib/seo";
 // import screenshot from "../assets/screenshot-blurry.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Find Minifigures",
-  description: "Find collectible minifigures in lego case",
-};
+export const metadata = pageMetadata({
+  title: "Find Minifigures — Identify Collectible Minifigures",
+  description:
+    "Find Minifigures helps you identify which collectible minifigure is inside a blind bag, track your collection and avoid duplicates.",
+  path: "/apps/findminifigures",
+});
 
 export default function Apps({
   searchParams,

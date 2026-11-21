@@ -8,6 +8,8 @@ import AppGrid from "./components/AppGrid";
 import Footer from "./components/Footer";
 import StoreBadges from "./components/StoreBadges";
 import { apps } from "./data/apps";
+import JsonLd from "./components/JsonLd";
+import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_URL, pageMetadata } from "./lib/seo";
 import trimAndTend from "./apps/assets/screenshot-trim-and-tend.png";
 import brickBreaker from "./apps/assets/screenshot-brick-breaker.png";
 import pawsPuzzle from "./apps/assets/screenshot-paws-puzzle.png";
@@ -51,9 +53,58 @@ function Phone({
   );
 }
 
+const HOME_TITLE = `${SITE_NAME} — Small apps, made with care`;
+const homeBase = pageMetadata({ title: HOME_TITLE, description: SITE_DESCRIPTION, path: "/" });
+
+// The home title already names the site, so skip the "| Hexa Apps" suffix.
+export const metadata = {
+  ...homeBase,
+  title: { absolute: HOME_TITLE },
+  openGraph: { ...homeBase.openGraph, title: HOME_TITLE },
+  twitter: { ...homeBase.twitter, title: HOME_TITLE },
+};
+
+const STRUCTURED_DATA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/android-chrome-512x512.png`,
+    email: CONTACT_EMAIL,
+    description: SITE_DESCRIPTION,
+    member: [
+      { "@type": "Person", name: "Berkay Oruç", url: `${SITE_URL}/berkay` },
+      { "@type": "Person", name: "Alihan Keskin", url: `${SITE_URL}/alihan` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Hexa Apps products",
+    itemListElement: apps.map((a, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: a.name,
+      url: a.external ? a.href : `${SITE_URL}${a.href}`,
+    })),
+  },
+];
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={STRUCTURED_DATA} />
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-49BZHMMWXC"></Script>
       <Script id="google-analytics">
         {`

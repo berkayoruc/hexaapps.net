@@ -1,13 +1,16 @@
+import { pageMetadata } from "../../lib/seo";
 import screenshot from "../assets/screenshot-paws-puzzle.png";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import AppContent from "../components/AppContent";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Paws Puzzle Slidr - Hexa",
-  description: "Cute Animal Sliding Puzzle Game",
-};
+export const metadata = pageMetadata({
+  title: "Paws Puzzle Slidr — Cute Animal Sliding Puzzle",
+  description:
+    "Solve animal-themed sliding puzzles in Paws Puzzle Slidr: 500+ levels across 50 worlds on iOS and Android.",
+  path: "/apps/paws-puzzle",
+});
 
 export default function Apps({
   searchParams,

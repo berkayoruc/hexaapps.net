@@ -70,7 +70,7 @@ export default function AppGrid() {
                   </span>
                 )}
               </span>
-              <span className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-2.5 sm:border-t-[1.5px] sm:border-ink sm:px-6 sm:pb-6 sm:pt-[22px]">
+              <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-2.5 sm:border-t-[1.5px] sm:border-ink sm:px-6 sm:pb-6 sm:pt-[22px]">
                 <span className="flex items-center justify-between gap-3">
                   <span className="text-[11px] font-semibold uppercase tracking-[0.06em] text-muted sm:text-xs">
                     {app.platform}
@@ -79,13 +79,13 @@ export default function AppGrid() {
                     <path d="M7 17 17 7M8 7h9v9" />
                   </svg>
                 </span>
-                <span className="font-display text-lg font-semibold tracking-tight sm:text-2xl">
+                <h3 className="font-display text-lg font-semibold tracking-tight sm:text-2xl">
                   {app.name}
-                </span>
+                </h3>
                 <span className="text-[13px] leading-snug text-muted sm:text-[15px] sm:leading-normal">
                   {app.desc}
                 </span>
-              </span>
+              </div>
               <svg className="shrink-0 sm:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M9 6l6 6-6 6" />
               </svg>

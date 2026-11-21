@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 html {
+	--font-inter: "Inter Variable";
+	--font-display: "Space Grotesk Variable";
 	scroll-behavior: smooth;
 }
 

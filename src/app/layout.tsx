@@ -1,13 +1,10 @@
+import "@fontsource-variable/inter";
+import "@fontsource-variable/space-grotesk";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter" });
-const display = Space_Grotesk({
-  subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-});
+// Fonts are self-hosted via @fontsource-variable packages instead of
+// next/font/google, so the build never has to reach Google Fonts.
 
 export const metadata: Metadata = {
   title: "Hexa Apps",
@@ -21,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable}`}>
+    <html lang="en">
       <body className="bg-paper font-sans text-ink antialiased">{children}</body>
     </html>
   );

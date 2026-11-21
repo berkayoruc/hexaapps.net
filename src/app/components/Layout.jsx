@@ -1,5 +1,14 @@
-const Layout = ({ children }) => {
-  return <div className="md:px-24 px-4 select-none h-[100svh]">{children}</div>;
+import HexDecor from "./HexDecor";
+import Footer from "./Footer";
+
+const Layout = ({ children, decor = "plain" }) => {
+  return (
+    <div className="relative flex min-h-[100svh] flex-col overflow-x-clip">
+      <HexDecor variant={decor} />
+      <div className="relative flex-1">{children}</div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;

@@ -30,9 +30,10 @@ export default function Apps({
     }
   } else {
     return (
-      <Layout>
+      <Layout decor="detail">
         <Header appName={appName} appURL={appURL} backPath="/apps" />
         <AppContent
+          appName={appName}
           screenshot={screenshot}
           title="Secure your privacy"
           p="AI Text Editor allows you to quickly and easily detect and edit text within your images! Utilizing cutting-edge artificial intelligence, our app automatically identifies text in your pictures and lets you highlight, blur, or completely hide it as per your needs."

@@ -1,79 +1,30 @@
 import Layout from "../components/Layout";
 import Header from "../components/Header";
-import AppButton from "../components/AppButton";
+import AppGrid from "../components/AppGrid";
+import { apps } from "../data/apps";
 
 export const metadata = {
-  title: "Apps",
-  description: "Apps",
+  title: "Apps - Hexa Apps",
+  description: "Games, mobile apps and web tools made by Hexa Apps.",
 };
 
 export default function Apps() {
   return (
-    <Layout>
-      <Header appName="Apps" backPath="/" />
-      <main className="pb-24 text-4xl ">
-        <div className="text-center flex flex-col lg:grid lg:grid-cols-3 gap-2">
-          <AppButton
-            appURL="/apps/trim-and-tend"
-            appName="Trim & Tend"
-            description="A Cozy Gardening Game"
-          />
-          <AppButton
-            appURL="/apps/brick-breaker"
-            appName="Brick Breaker - Hexa"
-            description="Classic Arcade Puzzle Game"
-          />
-          <AppButton
-            appURL="/apps/paws-puzzle"
-            appName="Paws Puzzle Slidr"
-            description="Cute Animal Sliding Puzzle Game"
-          />
-          <AppButton
-            appURL="/apps/find-my-thing"
-            appName="Find My Thing"
-            description="Find your thing with this app."
-          />
-          <AppButton
-            appURL="/apps/hexa-weight-tracker"
-            appName="Hexa Weight Tracker"
-            description="Track your weight with this app."
-          />
-          <AppButton
-            appURL="https://100times.blog/home/"
-            appName="100times.blog"
-            description="Ai generated entreprenerual blog."
-            target="_blank"
-          />
-          <AppButton
-            appURL="https://www.npmjs.com/package/ardelon-create-element"
-            appName="Create Element"
-            description="Basic UI building npm library"
-            target="_blank"
-          />
-          <AppButton
-            appURL="https://chromewebstore.google.com/detail/tab-tracker/effjhkgfakdenmlpfeadfcdofghpffki"
-            appName="Tab Tracker"
-            description="Tab tracking chrome extension."
-            target="_blank"
-          />
-
-          <AppButton
-            appURL="https://sandalyemisarjet.com/"
-            appName="Sandalyemi Şarj Et"
-            description="Belediyelerin ücretsiz şarj istasyonlarını bulun."
-            target="_blank"
-          />
-          <AppButton
-            appURL="/apps/breather"
-            appName="Breather"
-            description="iOS app to help you about breathing exercises."
-          />
-          <AppButton
-            appURL="/apps/blurry"
-            appName="Blurry"
-            description="AI Text Editor allows you to quickly and easily detect and edit text within your images."
-          />
+    <Layout decor="home">
+      <Header backPath="/" />
+      <main className="mx-auto max-w-[1240px] px-4 pb-14 pt-6 sm:px-8 sm:pb-28 sm:pt-12">
+        <div className="flex flex-col gap-2 pb-4 sm:gap-3 sm:pb-6">
+          <h1 className="font-display text-[40px] font-bold leading-none tracking-[-0.035em] sm:text-7xl">
+            Everything we&apos;ve{" "}
+            <span className="inline-block -rotate-2 rounded-[14px] bg-sun px-2.5 sm:rounded-[18px] sm:px-3.5">
+              made.
+            </span>
+          </h1>
+          <p className="pt-2 text-[15px] text-muted sm:text-[17px]">
+            {apps.length} products across games, mobile apps and the web.
+          </p>
         </div>
+        <AppGrid />
       </main>
     </Layout>
   );

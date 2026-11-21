@@ -30,9 +30,10 @@ export default function Apps({
     }
   } else {
     return (
-      <Layout>
+      <Layout decor="detail">
         <Header appName={appName} appURL={appURL} backPath="/apps" />
         <AppContent
+          appName={appName}
           screenshot={screenshot}
           title="Cute Animal Sliding Puzzle Game"
           p="Slide your way into fun! Solve beautiful animal-themed puzzles featuring 500+ levels across 50 unique worlds. Unlock rewards and master the slide!"

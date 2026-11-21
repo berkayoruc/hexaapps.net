@@ -22,9 +22,10 @@ export default function Apps({
     return null;
   } else {
     return (
-      <Layout>
+      <Layout decor="detail">
         <Header appName={appName} appURL={appURL} backPath="/apps" />
         <AppContent
+          appName={appName}
           screenshot={screenshot}
           title="Breathe easy"
           p="Breather is a simple app that helps you to relax and focus on your breathing. It guides you through a series of breathing exercises that help you to relax and focus."

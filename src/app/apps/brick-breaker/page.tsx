@@ -30,9 +30,10 @@ export default function Apps({
     }
   } else {
     return (
-      <Layout>
+      <Layout decor="detail">
         <Header appName={appName} appURL={appURL} backPath="/apps" />
         <AppContent
+          appName={appName}
           screenshot={screenshot}
           title="Classic Arcade Puzzle Game"
           p="Break bricks, master physics, unleash your reflexes! Enjoy this classic arcade puzzle game on your device."

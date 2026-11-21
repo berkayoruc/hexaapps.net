@@ -29,9 +29,10 @@ export default function Apps({
     }
   } else {
     return (
-      <Layout>
+      <Layout decor="detail">
         <Header appName={appName} appURL={appURL} backPath="/apps" />
         <AppContent
+          appName={appName}
           screenshot={"screenshot"}
           title="Find collectible minifigures"
           p="Unlock the mystery of your Lego® Collectible Minifigures! 'Find Minifigures' helps you identify which character is hiding inside those blind bags. Use our intuitive QR scanner for instant reveals on supported series, or explore detailed visual guides and checklists for all others. Track your collection, avoid unwanted duplicates, and complete your sets with ease!"

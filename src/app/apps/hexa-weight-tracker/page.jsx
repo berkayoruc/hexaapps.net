@@ -13,9 +13,10 @@ export default function Apps() {
     "https://apps.apple.com/us/app/hexa-weight-tracker/id6443335021";
   const appName = "Hexa Weight Tracker";
   return (
-    <Layout>
+    <Layout decor="detail">
       <Header appName={appName} appURL={appURL} backPath="/apps" />
       <AppContent
+          appName={appName}
         screenshot={screenshot}
         title="A quick and simple way to track your weight"
         p="Different time periods, various charts, easy to track weight, and more."
